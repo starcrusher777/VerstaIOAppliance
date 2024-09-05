@@ -24,11 +24,6 @@ public class OrdersController : ControllerBase
     {
         var orders = await _context.Orders.ToListAsync();
 
-        if (!orders.Any())
-        {
-            return NotFound("No orders found!");
-        }
-        
         return Ok(_mapper.Map<List<OrderModel>>(orders));
     }
 
