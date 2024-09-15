@@ -1,4 +1,4 @@
-﻿namespace VerstaIOAppliance.Models;
+﻿namespace VA.Infrastructure.Models;
 
 public class OrderModel
 {

@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using VerstaIOAppliance.Entities;
-using VerstaIOAppliance.Models;
+using VA.Infrastructure.Entities;
+using VA.Infrastructure.Models;
 
-namespace VerstaIOAppliance.Mappings;
+
+namespace VA.Infrastructure.Mappings.Profiles;
 
 public class OrderProfile : Profile
 {

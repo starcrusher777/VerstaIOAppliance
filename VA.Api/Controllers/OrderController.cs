@@ -1,28 +1,28 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using VerstaIOAppliance.Entities;
-using VerstaIOAppliance.Models;
+using VA.Application.Services;
+using VA.Infrastructure.Data;
+using VA.Infrastructure.Models;
 
-namespace VerstaIOAppliance.Controllers;
+namespace VA.Api.Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]
 public class OrdersController : ControllerBase
 {
-    private readonly ApplicationContext _context;
+    private readonly OrderService _service;
     private readonly IMapper _mapper;
 
-    public OrdersController(ApplicationContext context, IMapper mapper)
+    public OrdersController(OrderService service, IMapper mapper)
     {
-        _context = context;
+        _service = service;
         _mapper = mapper;
     }
 
     [HttpGet]
-    public async Task<ActionResult> GetOrders()
+    public async Task<IActionResult> GetOrders()
     {
-        var orders = await _context.Orders.ToListAsync();
+        var orders = await _service.GetOrders();
 
         if (!orders.Any())
         {
@@ -35,7 +35,7 @@ public class OrdersController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetOrder(long id)
     {
-        var order = await _context.Orders.FindAsync(id);
+        var order = await _service.GetOrderById(id);
         
         if (order == null)
         {
@@ -58,8 +58,8 @@ public class OrdersController : ControllerBase
             DeliveryDate = order.DeliveryDate
         };
         
-        _context.Orders.Add(_mapper.Map<OrderEntity>(orderModel));
-        await _context.SaveChangesAsync();
+        _service.CreateOrder(_mapper.Map<OrderModel>(orderModel));
+        _service.SaveChanges();
         
         return Ok(orderModel);
     }

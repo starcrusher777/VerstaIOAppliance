@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VerstaIOAppliance.Entities;
+namespace VA.Infrastructure.Entities;
 
 public class OrderEntity
 {
     [Key]
     public long Id { get; set; }
+    
+    [Required]
     public string SenderCity { get; set; }
     public string SenderAddress { get; set; }
     public string RecipientCity { get; set; }
