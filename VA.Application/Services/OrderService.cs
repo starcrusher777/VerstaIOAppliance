@@ -18,36 +18,25 @@ public class OrderService
         _mapper = mapper;
     }
 
-    public async Task<OrderModel> CreateOrder (OrderModel order)
+    public async Task<OrderModel> CreateOrderAsync (OrderModel order)
     {
-        var orderModel = new OrderModel
-        {
-            SenderCity = order.SenderCity,
-            SenderAddress = order.SenderAddress,
-            RecipientCity = order.RecipientCity,
-            RecipientAddress = order.RecipientAddress,
-            Weight = order.Weight,
-            DeliveryDate = order.DeliveryDate
-        };
-        
-        _orderRepository.Add(_mapper.Map<OrderEntity>(orderModel));
-        _orderRepository.SaveChanges();
+        var orderEntity = _mapper.Map<OrderEntity>(order);
+
+        await _orderRepository.AddAsync(orderEntity);
+        await _orderRepository.SaveChangesAsync();
 
         return order;
     }
 
-    public async Task<List<OrderEntity>> GetOrders()
+    public async Task<List<OrderModel>> GetOrdersAsync()
     {
-        return await _orderRepository.GetOrdersAsync();
+        var orders = await _orderRepository.GetOrdersAsync();
+        return _mapper.Map<List<OrderModel>>(orders);
     }
 
-    public async Task<Task<ActionResult<OrderEntity>>> GetOrderById(long id)
+    public async Task<OrderModel> GetOrderAsync(long id)
     {
-        return _orderRepository.GetOrder(id);
-    }
-
-    public async Task SaveChanges()
-    {
-        _orderRepository.SaveChanges();
+        var orderEntity = await _orderRepository.GetOrderAsync(id);
+        return _mapper.Map<OrderModel>(orderEntity);
     }
 }

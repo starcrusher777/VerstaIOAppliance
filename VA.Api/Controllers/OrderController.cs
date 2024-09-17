@@ -22,7 +22,7 @@ public class OrdersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetOrders()
     {
-        var orders = await _service.GetOrders();
+        var orders = await _service.GetOrdersAsync();
 
         if (!orders.Any())
         {
@@ -35,7 +35,7 @@ public class OrdersController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetOrder(long id)
     {
-        var order = await _service.GetOrderById(id);
+        var order = await _service.GetOrderAsync(id);
         
         if (order == null)
         {
@@ -48,19 +48,26 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> CreateOrder(OrderModel order)
     {
-        var orderModel = new OrderModel
+        try
         {
-            SenderCity = order.SenderCity,
-            SenderAddress = order.SenderAddress,
-            RecipientCity = order.RecipientCity,
-            RecipientAddress = order.RecipientAddress,
-            Weight = order.Weight,
-            DeliveryDate = order.DeliveryDate
-        };
-        
-        _service.CreateOrder(_mapper.Map<OrderModel>(orderModel));
-        _service.SaveChanges();
-        
-        return Ok(orderModel);
+            var orderModel = new OrderModel
+            {
+                SenderCity = order.SenderCity,
+                SenderAddress = order.SenderAddress,
+                RecipientCity = order.RecipientCity,
+                RecipientAddress = order.RecipientAddress,
+                Weight = order.Weight,
+                DeliveryDate = order.DeliveryDate
+            };
+
+            _service.CreateOrderAsync(_mapper.Map<OrderModel>(orderModel));
+            _service.SaveChangesAsync();
+
+            return Ok(orderModel);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
     }
 }

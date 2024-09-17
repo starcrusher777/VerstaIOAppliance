@@ -6,8 +6,8 @@ namespace VA.Domain.Interfaces;
 public interface IOrderRepository
 {
     Task<List<OrderEntity>> GetOrdersAsync();
-    Task<ActionResult<OrderEntity>> GetOrder(long id);
-    Task<ActionResult<OrderEntity>> CreateOrder(OrderEntity order);
-    void Add(OrderEntity order);
-    void SaveChanges();
+    Task<OrderEntity> GetOrderAsync(long id);
+    Task CreateOrderAsync (OrderEntity order);
+    Task AddAsync(OrderEntity order);
+    Task SaveChangesAsync();
 }
