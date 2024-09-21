@@ -7,7 +7,7 @@ public interface IOrderRepository
 {
     Task<List<OrderEntity>> GetOrdersAsync();
     Task<OrderEntity> GetOrderAsync(long id);
-    Task CreateOrderAsync (OrderEntity order);
+    Task<OrderEntity> CreateOrderAsync (OrderEntity order);
     Task AddAsync(OrderEntity order);
     Task SaveChangesAsync();
 }

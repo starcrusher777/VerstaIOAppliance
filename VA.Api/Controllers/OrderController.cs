@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using VA.Application.Services;
+using VA.Domain.Entities;
 using VA.Infrastructure.Models;
 
 namespace VA.Api.Controllers;
@@ -59,8 +60,7 @@ public class OrdersController : ControllerBase
                 DeliveryDate = order.DeliveryDate
             };
 
-            _service.CreateOrderAsync(_mapper.Map<OrderModel>(orderModel));
-            _service.SaveChangesAsync();
+            await _service.CreateOrderAsync(_mapper.Map<OrderModel>(orderModel));
 
             return Ok(orderModel);
         }

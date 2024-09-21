@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VA.Domain.Entities;
 using VA.Domain.Interfaces;
+using VA.Infrastructure.Models;
 
 namespace VA.Infrastructure.Data;
 
@@ -26,10 +27,11 @@ public class OrderRepository : IOrderRepository
         return await _context.Orders.FindAsync(id);
     }
     
-    public async Task CreateOrderAsync (OrderEntity order)
+    public async Task<OrderEntity> CreateOrderAsync (OrderEntity order)
     {
         await _context.Orders.AddAsync(order);
         await _context.SaveChangesAsync();
+        return order;
     }
 
     public async Task SaveChangesAsync()

@@ -18,6 +18,8 @@ public class Program
         builder.Services.AddScoped<OrderService>();
         builder.Services.AddSwaggerGen();
         builder.Services.AddControllers();
+        builder.Services.AddHealthChecks()
+            .AddSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
         builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
         builder.Services.AddAutoMapper(typeof(Program));
         builder.Services.AddCors(options =>
@@ -44,6 +46,22 @@ public class Program
         app.MapControllers();
         app.UseHttpsRedirection();
         app.UseAuthorization();
+        app.MapHealthChecks("/health");
+
+        using (var serviceScope = app.Services.CreateScope())
+        {
+            var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationContext>();
+            try
+            {
+                context.Database.CanConnect();
+                Console.WriteLine("Connection established");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                app.Lifetime.StopApplication();
+            }
+        }
         
         app.Run();
     }

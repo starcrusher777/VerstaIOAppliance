@@ -18,25 +18,24 @@ public class OrderService
         _mapper = mapper;
     }
 
-    public async Task<OrderModel> CreateOrderAsync (OrderModel order)
+    public async Task CreateOrderAsync(OrderModel order)
     {
         var orderEntity = _mapper.Map<OrderEntity>(order);
-
+        
+        await _orderRepository.CreateOrderAsync(orderEntity);
         await _orderRepository.AddAsync(orderEntity);
         await _orderRepository.SaveChangesAsync();
-
-        return order;
     }
 
-    public async Task<List<OrderModel>> GetOrdersAsync()
+    public async Task<List<OrderEntity>> GetOrdersAsync()
     {
         var orders = await _orderRepository.GetOrdersAsync();
-        return _mapper.Map<List<OrderModel>>(orders);
+        return _mapper.Map<List<OrderEntity>>(orders);
     }
 
-    public async Task<OrderModel> GetOrderAsync(long id)
+    public async Task<OrderEntity> GetOrderAsync(long id)
     {
         var orderEntity = await _orderRepository.GetOrderAsync(id);
-        return _mapper.Map<OrderModel>(orderEntity);
+        return _mapper.Map<OrderEntity>(orderEntity);
     }
 }
