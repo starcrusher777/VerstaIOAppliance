@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using VA.Infrastructure.Entities;
+using VA.Domain.Entities;
 using VA.Infrastructure.Models;
 
 

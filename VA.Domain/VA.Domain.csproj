@@ -13,7 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\VA.Infrastructure\VA.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

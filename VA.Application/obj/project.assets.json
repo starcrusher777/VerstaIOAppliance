@@ -1135,8 +1135,7 @@
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Microsoft.AspNetCore.OpenApi": "8.0.8",
-          "Swashbuckle.AspNetCore": "6.4.0",
-          "VA.Infrastructure": "1.0.0"
+          "Swashbuckle.AspNetCore": "6.4.0"
         },
         "compile": {
           "bin/placeholder/VA.Domain.dll": {}
@@ -1157,7 +1156,8 @@
           "Microsoft.AspNetCore.OpenApi": "8.0.8",
           "Microsoft.EntityFrameworkCore": "9.0.0-preview.7.24405.3",
           "Microsoft.EntityFrameworkCore.Abstractions": "9.0.0-rc.1.24451.1",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "VA.Domain": "1.0.0"
         },
         "compile": {
           "bin/placeholder/VA.Infrastructure.dll": {}
@@ -3505,6 +3505,7 @@
       "Microsoft.AspNetCore.OpenApi >= 8.0.8",
       "Microsoft.EntityFrameworkCore >= 9.0.0-preview.7.24405.3",
       "Swashbuckle.AspNetCore >= 6.4.0",
+      "VA.Infrastructure >= 1.0.0",
       "VerstaIOAppliance >= 1.0.0"
     ]
   },
@@ -3533,6 +3534,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Infrastructure\\VA.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Infrastructure\\VA.Infrastructure.csproj"
+            },
             "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VerstaIOAppliance\\VerstaIOAppliance.csproj": {
               "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VerstaIOAppliance\\VerstaIOAppliance.csproj"
             }

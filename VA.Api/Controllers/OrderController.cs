@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using VA.Application.Services;
-using VA.Infrastructure.Data;
 using VA.Infrastructure.Models;
 
 namespace VA.Api.Controllers;

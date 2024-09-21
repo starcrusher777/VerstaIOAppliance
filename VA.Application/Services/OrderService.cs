@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using VA.Domain.Entities;
 using VA.Domain.Interfaces;
-using VA.Infrastructure.Entities;
 using VA.Infrastructure.Models;
 
 namespace VA.Application.Services;

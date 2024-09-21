@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VA.Infrastructure.Entities;
+using VA.Domain.Entities;
 
 namespace VA.Domain.Interfaces;
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VA.Infrastructure.Entities;
+using VA.Domain.Entities;
 
 
 namespace VA.Infrastructure.Data;

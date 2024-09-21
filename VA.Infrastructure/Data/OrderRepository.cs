@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using VA.Infrastructure.Entities;
-using VA.Infrastructure.Models;
+using VA.Domain.Entities;
 using VA.Domain.Interfaces;
 
 namespace VA.Infrastructure.Data;

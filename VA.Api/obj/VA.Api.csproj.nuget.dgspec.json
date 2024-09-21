@@ -31,6 +31,9 @@
               },
               "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Domain\\VA.Domain.csproj": {
                 "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Domain\\VA.Domain.csproj"
+              },
+              "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Infrastructure\\VA.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Infrastructure\\VA.Infrastructure.csproj"
               }
             }
           }
@@ -108,6 +111,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Infrastructure\\VA.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Infrastructure\\VA.Infrastructure.csproj"
+              },
               "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VerstaIOAppliance\\VerstaIOAppliance.csproj": {
                 "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VerstaIOAppliance\\VerstaIOAppliance.csproj"
               }
@@ -186,11 +192,7 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {
-              "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Infrastructure\\VA.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Infrastructure\\VA.Infrastructure.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -265,7 +267,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Domain\\VA.Domain.csproj": {
+                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\VerstaIOAppliance\\VA.Domain\\VA.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

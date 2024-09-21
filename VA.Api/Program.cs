@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using VA.Application.Services;
 using VA.Domain.Interfaces;
 using VA.Infrastructure.Data;
 
@@ -13,7 +14,8 @@ public class Program
         builder.Services.AddAuthorization();
         
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddScoped<IOrderRepository>();
+        builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+        builder.Services.AddScoped<OrderService>();
         builder.Services.AddSwaggerGen();
         builder.Services.AddControllers();
         builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -37,6 +39,7 @@ public class Program
             app.UseSwaggerUI();
             app.UseCors("AllowAnyOrigin");
         }
+        
 
         app.MapControllers();
         app.UseHttpsRedirection();

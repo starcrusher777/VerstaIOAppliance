@@ -15,6 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\VA.Application\VA.Application.csproj" />
       <ProjectReference Include="..\VA.Domain\VA.Domain.csproj" />
+      <ProjectReference Include="..\VA.Infrastructure\VA.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

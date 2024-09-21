@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\VA.Infrastructure\VA.Infrastructure.csproj" />
       <ProjectReference Include="..\VerstaIOAppliance\VerstaIOAppliance.csproj" />
     </ItemGroup>
 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VA.Infrastructure.Entities;
+namespace VA.Domain.Entities;
 
 public class OrderEntity
 {
