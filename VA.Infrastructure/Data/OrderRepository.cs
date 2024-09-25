@@ -33,15 +33,5 @@ public class OrderRepository : IOrderRepository
         await _context.SaveChangesAsync();
         return order;
     }
-
-    public async Task SaveChangesAsync()
-    {
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task AddAsync(OrderEntity order)
-    {
-        await _context.Orders.AddAsync(order);
-    }
     
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using VA.Application.Services;
 using VA.Domain.Interfaces;
 using VA.Infrastructure.Data;
+using VA.Infrastructure.Mappings.Profiles;
 
 namespace VA.Api;
 
@@ -21,7 +22,7 @@ public class Program
         builder.Services.AddHealthChecks()
             .AddSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
         builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-        builder.Services.AddAutoMapper(typeof(Program));
+        builder.Services.AddAutoMapper(typeof(OrderProfile));
         builder.Services.AddCors(options =>
         {
             options.AddPolicy("AllowAnyOrigin",

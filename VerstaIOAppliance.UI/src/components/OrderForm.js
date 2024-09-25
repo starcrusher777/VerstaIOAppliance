@@ -21,7 +21,7 @@ const OrderForm = ({ onOrderCreated }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const response = await axios.post('http://localhost:5105/api/Orders/CreateOrder', order);
+        const response = await axios.post('http://localhost:5141/api/Orders/CreateOrder', order);
         onOrderCreated(response.data);
     };
 

@@ -136,11 +136,23 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.0-preview.7.24405.3, )"
+              "version": "[9.0.0-rc.1.24451.1, )"
             },
             "Microsoft.EntityFrameworkCore.Abstractions": {
               "target": "Package",
               "version": "[9.0.0-rc.1.24451.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[9.0.0-rc.1.24451.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0-rc.1.24451.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using VA.Domain.Entities;
 using VA.Domain.Interfaces;
 using VA.Infrastructure.Models;
@@ -21,10 +19,7 @@ public class OrderService
     public async Task CreateOrderAsync(OrderModel order)
     {
         var orderEntity = _mapper.Map<OrderEntity>(order);
-        
         await _orderRepository.CreateOrderAsync(orderEntity);
-        await _orderRepository.AddAsync(orderEntity);
-        await _orderRepository.SaveChangesAsync();
     }
 
     public async Task<List<OrderEntity>> GetOrdersAsync()

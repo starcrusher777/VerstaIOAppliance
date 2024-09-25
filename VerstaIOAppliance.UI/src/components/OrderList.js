@@ -6,7 +6,7 @@ const OrderList = ({ onSelectOrder, showModal }) => {
 
     useEffect(() => {
         const fetchOrders = async () => {
-            const response = await axios.get('http://localhost:5105/api/Orders/GetOrders/');
+            const response = await axios.get('http://localhost:5141/api/Orders/GetOrders/');
             setOrders(response.data);
         };
 

@@ -42,7 +42,7 @@ public class OrdersController : ControllerBase
             return NotFound($"Order with id '{id}' not found!");
         }
 
-        return Ok(order);
+        return Ok(_mapper.Map<OrderModel>(order));
     }
 
     [HttpPost]
@@ -60,13 +60,15 @@ public class OrdersController : ControllerBase
                 DeliveryDate = order.DeliveryDate
             };
 
-            await _service.CreateOrderAsync(_mapper.Map<OrderModel>(orderModel));
-
-            return Ok(orderModel);
+            await _service.CreateOrderAsync(orderModel);
+            
+            return Ok(_mapper.Map<OrderModel>(orderModel));
         }
         catch (Exception ex)
         {
-            return StatusCode(500, ex.Message);
+            Console.WriteLine(ex);
+            
+            return StatusCode(500, ex);
         }
     }
 }
