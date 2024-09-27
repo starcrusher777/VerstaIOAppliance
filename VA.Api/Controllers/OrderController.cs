@@ -26,7 +26,7 @@ public class OrdersController : ControllerBase
 
         if (!orders.Any())
         {
-            return StatusCode(200, "No orders found");
+            return Ok("No orders found");
         }
         
         return Ok(_mapper.Map<List<OrderModel>>(orders));
@@ -48,27 +48,8 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> CreateOrder(OrderModel order)
     {
-        try
-        {
-            var orderModel = new OrderModel
-            {
-                SenderCity = order.SenderCity,
-                SenderAddress = order.SenderAddress,
-                RecipientCity = order.RecipientCity,
-                RecipientAddress = order.RecipientAddress,
-                Weight = order.Weight,
-                DeliveryDate = order.DeliveryDate
-            };
-
-            await _service.CreateOrderAsync(orderModel);
-            
-            return Ok(_mapper.Map<OrderModel>(orderModel));
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex);
-            
-            return StatusCode(500, ex);
-        }
+        await _service.CreateOrderAsync(order);
+        
+        return Ok(_mapper.Map<OrderModel>(order));
     }
 }

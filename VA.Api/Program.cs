@@ -11,6 +11,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
         
         builder.Services.AddAuthorization();
         
@@ -19,10 +20,9 @@ public class Program
         builder.Services.AddScoped<OrderService>();
         builder.Services.AddSwaggerGen();
         builder.Services.AddControllers();
-        builder.Services.AddHealthChecks()
-            .AddSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-        builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-        builder.Services.AddAutoMapper(typeof(OrderProfile));
+        builder.Services.AddHealthChecks().AddSqlServer(connectionString);
+        builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddCors(options =>
         {
             options.AddPolicy("AllowAnyOrigin",
@@ -48,21 +48,6 @@ public class Program
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapHealthChecks("/health");
-
-        using (var serviceScope = app.Services.CreateScope())
-        {
-            var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationContext>();
-            try
-            {
-                context.Database.CanConnect();
-                Console.WriteLine("Connection established");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                app.Lifetime.StopApplication();
-            }
-        }
         
         app.Run();
     }

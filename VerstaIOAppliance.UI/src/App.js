@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import OrderForm from './components/OrderForm';
 import OrderList from './components/OrderList';
 import OrderDetail from './components/OrderDetail';
+import {NavBar} from "./components/NavBar";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {

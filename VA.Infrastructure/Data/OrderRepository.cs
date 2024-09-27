@@ -1,10 +1,6 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using VA.Domain.Entities;
 using VA.Domain.Interfaces;
-using VA.Infrastructure.Models;
 
 namespace VA.Infrastructure.Data;
 
@@ -22,16 +18,16 @@ public class OrderRepository : IOrderRepository
         return await _context.Orders.ToListAsync();
     }
 
-    public async Task<OrderEntity> GetOrderAsync(long id)
+    public async Task<OrderEntity?> GetOrderAsync(long id)
     {
         return await _context.Orders.FindAsync(id);
     }
     
-    public async Task<OrderEntity> CreateOrderAsync (OrderEntity order)
+    public async Task<OrderEntity> CreateOrderAsync (OrderEntity orderEntity)
     {
-        await _context.Orders.AddAsync(order);
+        await _context.Orders.AddAsync(orderEntity);
         await _context.SaveChangesAsync();
-        return order;
+        return orderEntity;
     }
     
 }
