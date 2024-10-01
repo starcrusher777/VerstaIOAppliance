@@ -11,6 +11,7 @@ const OrderForm = ({ onOrderCreated }) => {
         weight: 0.0,
         deliveryDate: '',
         id : 0,
+        createdAt: '',
     });
 
     const handleChange = (e) => {

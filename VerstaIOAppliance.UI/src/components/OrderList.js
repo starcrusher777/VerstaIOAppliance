@@ -7,7 +7,8 @@ const OrderList = ({ onSelectOrder, showModal }) => {
     useEffect(() => {
         const fetchOrders = async () => {
             const response = await axios.get('http://localhost:5141/api/Orders/GetOrders/');
-            setOrders(response.data);
+            const sortedOrders = response.data.sort((a, b) => new Date(b.id) - new Date(a.id));
+            setOrders(sortedOrders);
         };
 
         fetchOrders();
@@ -16,11 +17,13 @@ const OrderList = ({ onSelectOrder, showModal }) => {
     return (
         <ul>
             <div className="order-list">
-                <h1 className="text-color">Список заказов</h1>
-            { 
-                orders.map(order => (
-                    <li className="list-style" key={order.id} onClick={() => { onSelectOrder(order); showModal(true) }}>
-                        <b>{order.id}</b> - {order.senderCity} - {order.recipientCity}
+                <div className="order-list_header">
+                    <h1 className="order-list-text-color">Список заказов</h1>
+                </div>
+                {
+                    orders.map(order => (
+                        <li className="list-style" key={order.id} onClick={() => { onSelectOrder(order); showModal(true) }}>
+                        <b>{order.id}:</b> {order.senderCity} {order.senderAddress} {order.recipientCity} {order.recipientAddress} {order.createdAt}
                     </li>
                 ))
             }

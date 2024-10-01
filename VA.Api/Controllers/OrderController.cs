@@ -48,6 +48,8 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> CreateOrder(OrderModel order)
     {
+        order.CreatedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        
         await _service.CreateOrderAsync(order);
         
         return Ok(_mapper.Map<OrderModel>(order));

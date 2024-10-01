@@ -14,4 +14,5 @@ public class OrderEntity
     public string RecipientAddress { get; set; }
     public double Weight { get; set; }
     public DateTime DeliveryDate { get; set; }
+    public DateTime CreatedAt { get; set; }
 }

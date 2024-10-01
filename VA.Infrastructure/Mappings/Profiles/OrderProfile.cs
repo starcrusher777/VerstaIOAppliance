@@ -12,6 +12,7 @@ public class OrderProfile : Profile
         CreateMap<OrderModel, OrderEntity>()
             .ForMember(x => x.DeliveryDate, opt => opt.MapFrom(y => DateTime.Parse(y.DeliveryDate)))
             .ForMember(x => x.Weight, opt => opt.MapFrom(y => Double.Parse(y.Weight)))
+            .ForMember(x => x.CreatedAt, opt => opt.MapFrom(y => DateTime.Parse(y.CreatedAt)))
             .ReverseMap();
     }
 }

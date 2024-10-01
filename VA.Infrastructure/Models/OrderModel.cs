@@ -9,4 +9,5 @@ public class OrderModel
     public string RecipientAddress { get; set; }
     public string Weight { get; set; }
     public string DeliveryDate { get; set; }
+    public string CreatedAt { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
 }
