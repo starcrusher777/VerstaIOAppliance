@@ -1,14 +1,15 @@
-﻿import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import api from '../api';
 
 const OrderList = ({ onSelectOrder, showModal }) => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         const fetchOrders = async () => {
-            const response = await axios.get('http://localhost:5141/api/Orders/GetOrders/');
-            const sortedOrders = response.data.sort((a, b) => new Date(b.id) - new Date(a.id));
-            setOrders(sortedOrders);
+            const response = await api.get('/api/Orders/GetOrders');
+            const data = Array.isArray(response.data) ? response.data : [];
+            const sorted = [...data].sort((a, b) => (b.id || 0) - (a.id || 0));
+            setOrders(sorted);
         };
 
         fetchOrders();

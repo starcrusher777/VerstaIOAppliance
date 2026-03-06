@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using VA.Domain.Entities;
 using VA.Domain.Interfaces;
 using VA.Infrastructure.Models;
@@ -16,21 +16,19 @@ public class OrderService
         _mapper = mapper;
     }
 
-    public async Task CreateOrderAsync(OrderModel orderModel)
+    public async Task<OrderEntity> CreateOrderAsync(OrderModel orderModel)
     {
         var orderEntity = _mapper.Map<OrderEntity>(orderModel);
-        await _orderRepository.CreateOrderAsync(orderEntity);
+        return await _orderRepository.CreateOrderAsync(orderEntity);
     }
 
     public async Task<List<OrderEntity>> GetOrdersAsync()
     {
-        var orders = await _orderRepository.GetOrdersAsync();
-        return _mapper.Map<List<OrderEntity>>(orders);
+        return await _orderRepository.GetOrdersAsync();
     }
 
     public async Task<OrderEntity?> GetOrderAsync(long id)
     {
-        var order = await _orderRepository.GetOrderAsync(id);
-        return _mapper.Map<OrderEntity>(order);
+        return await _orderRepository.GetOrderAsync(id);
     }
 }

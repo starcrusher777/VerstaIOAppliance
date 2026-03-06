@@ -5,7 +5,6 @@ import OrderDetail from './components/OrderDetail';
 import NavTabs from "./components/NavTabs";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap-grid.min.css'
 const App = () => {
     const [view, setView] = useState('orders');
     const [selectedOrder, setSelectedOrder] = useState(null);

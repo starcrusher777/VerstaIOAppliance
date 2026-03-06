@@ -1,7 +1,6 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using VA.Application.Services;
-using VA.Domain.Entities;
 using VA.Infrastructure.Models;
 
 namespace VA.Api.Controllers;
@@ -23,12 +22,6 @@ public class OrdersController : ControllerBase
     public async Task<IActionResult> GetOrders()
     {
         var orders = await _service.GetOrdersAsync();
-
-        if (!orders.Any())
-        {
-            return Ok("No orders found");
-        }
-        
         return Ok(_mapper.Map<List<OrderModel>>(orders));
     }
 
@@ -46,12 +39,10 @@ public class OrdersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateOrder(OrderModel order)
+    public async Task<ActionResult<OrderModel>> CreateOrder(OrderModel order)
     {
         order.CreatedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        
-        await _service.CreateOrderAsync(order);
-        
-        return Ok(_mapper.Map<OrderModel>(order));
+        var created = await _service.CreateOrderAsync(order);
+        return Ok(_mapper.Map<OrderModel>(created));
     }
 }

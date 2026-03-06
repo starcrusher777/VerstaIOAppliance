@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
@@ -23,8 +23,8 @@ const OrderDetail = ({order, show, onClose}) => {
                 <p>Город получателя: <b>{order.recipientCity}</b></p>
                 <p>Адрес получателя: <b>{order.recipientAddress}</b></p>
                 <p>Вес груза: <b>{order.weight} кг.</b></p>
-                <p>Дата забора: <b>{order.deliveryDate.slice(0, 10)}</b></p>
-                <p>Дата создания: <b>{order.createdAt}</b></p>
+                <p>Дата забора: <b>{order.deliveryDate ? String(order.deliveryDate).slice(0, 10) : '—'}</b></p>
+                <p>Дата создания: <b>{order.createdAt ?? '—'}</b></p>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={() => onClose(false)}>

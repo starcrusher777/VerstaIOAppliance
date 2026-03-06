@@ -1,4 +1,3 @@
-﻿using Microsoft.AspNetCore.Mvc;
 using VA.Domain.Entities;
 
 namespace VA.Domain.Interfaces;

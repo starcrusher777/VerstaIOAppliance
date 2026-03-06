@@ -1,5 +1,4 @@
-﻿import Nav from "react-bootstrap/Nav"
-import 'bootstrap/dist/css/bootstrap-grid.min.css'
+import Nav from "react-bootstrap/Nav";
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';

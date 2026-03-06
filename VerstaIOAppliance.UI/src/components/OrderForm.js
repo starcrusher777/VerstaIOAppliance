@@ -1,6 +1,6 @@
-﻿import React, { useState } from 'react';
-import axios from 'axios';
-import {Button} from "react-bootstrap";
+import React, { useState } from 'react';
+import api from '../api';
+import { Button } from 'react-bootstrap';
 
 const OrderForm = ({ onOrderCreated }) => {
     const [order, setOrder] = useState({
@@ -8,10 +8,8 @@ const OrderForm = ({ onOrderCreated }) => {
         senderAddress: '',
         recipientCity: '',
         recipientAddress: '',
-        weight: 0.0,
+        weight: '',
         deliveryDate: '',
-        id : 0,
-        createdAt: '',
     });
 
     const handleChange = (e) => {
@@ -21,8 +19,12 @@ const OrderForm = ({ onOrderCreated }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        const response = await axios.post('http://localhost:5141/api/Orders/CreateOrder', order);
+        const payload = {
+            ...order,
+            weight: String(order.weight),
+            deliveryDate: order.deliveryDate,
+        };
+        const response = await api.post('/api/Orders/CreateOrder', payload);
         onOrderCreated(response.data);
     };
 

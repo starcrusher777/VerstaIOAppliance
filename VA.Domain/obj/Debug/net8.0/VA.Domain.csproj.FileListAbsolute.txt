@@ -1,0 +1,12 @@
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\bin\Debug\net8.0\VA.Domain.deps.json
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\bin\Debug\net8.0\VA.Domain.dll
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\bin\Debug\net8.0\VA.Domain.pdb
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\obj\Debug\net8.0\VA.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\obj\Debug\net8.0\VA.Domain.AssemblyInfoInputs.cache
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\obj\Debug\net8.0\VA.Domain.AssemblyInfo.cs
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\obj\Debug\net8.0\VA.Domain.csproj.CoreCompileInputs.cache
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\obj\Debug\net8.0\VA.Domain.sourcelink.json
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\obj\Debug\net8.0\VA.Domain.dll
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\obj\Debug\net8.0\refint\VA.Domain.dll
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\obj\Debug\net8.0\VA.Domain.pdb
+D:\Programming\GitHub\VerstaIOAppliance\VA.Domain\obj\Debug\net8.0\ref\VA.Domain.dll
